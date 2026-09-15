@@ -1,11 +1,11 @@
 {
-  "name": "a2-maxgingold",
+  "name": "a3-maxgingold",
   "version": "1.0.0",
-  "description": "Max Gingold CS4241 Assignment 2",
+  "description": "Max Gingold CS4241 Assignment 3",
   "author": "Max Gingold",
   "license": "MIT",
   "main": "server.js",
-  "homepage": "https://a2-maxgingold.onrender.com",
+  "homepage": "https://a3-maxgingold.onrender.com",
   "scripts": {
     "start": "node server.js"
   },
