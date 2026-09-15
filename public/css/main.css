@@ -1,0 +1,161 @@
+/* Load the Roboto font used for all text */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Roboto for all page text */
+body {
+  margin: 0;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+/* buttons/inputs/tables don't inherit font-family, so set it here too */
+button,
+input,
+table {
+  font-family: inherit;
+}
+
+/* keep a hidden screen hidden even when it has its own display rule */
+[hidden] {
+  display: none !important;
+}
+
+/* Color theme (from AdobeColor-My Color Theme.jpeg):
+   deep blue #2700FF, light blue #8CAFFF, green #00A213 (deepened from the
+   palette's #00D819), black #000000, off-white #F2F2F2.
+   Bootstrap's compiled CSS bakes literal hex into each component's own custom
+   properties rather than referencing the root theme variables, so both need updating. */
+:root {
+  --bs-primary: #2700FF;
+  --bs-primary-rgb: 39, 0, 255;
+  --bs-secondary: #8CAFFF;
+  --bs-secondary-rgb: 140, 175, 255;
+  --bs-success: #00A213;
+  --bs-success-rgb: 0, 162, 19;
+  --bs-dark: #000000;
+  --bs-dark-rgb: 0, 0, 0;
+  --bs-light: #F2F2F2;
+  --bs-light-rgb: 242, 242, 242;
+}
+
+/* Primary buttons: Login/Signup, Save score */
+.btn-primary {
+  --bs-btn-bg: #2700FF;
+  --bs-btn-border-color: #2700FF;
+  --bs-btn-hover-bg: #2100D9;
+  --bs-btn-hover-border-color: #1D00BF;
+  --bs-btn-active-bg: #1B00B3;
+  --bs-btn-active-border-color: #1900A6;
+  --bs-btn-disabled-bg: #2700FF;
+  --bs-btn-disabled-border-color: #2700FF;
+  --bs-btn-focus-shadow-rgb: 39, 0, 255;
+}
+
+/* View scoreboard */
+.btn-outline-primary {
+  --bs-btn-color: #2700FF;
+  --bs-btn-border-color: #2700FF;
+  --bs-btn-hover-bg: #2700FF;
+  --bs-btn-hover-border-color: #2700FF;
+  --bs-btn-active-bg: #1B00B3;
+  --bs-btn-active-border-color: #1B00B3;
+  --bs-btn-focus-shadow-rgb: 39, 0, 255;
+}
+
+/* Start game: green */
+.btn-success {
+  --bs-btn-color: #000;
+  --bs-btn-bg: #00A213;
+  --bs-btn-border-color: #00A213;
+  --bs-btn-hover-color: #000;
+  --bs-btn-hover-bg: #008F11;
+  --bs-btn-hover-border-color: #007D0F;
+  --bs-btn-active-color: #000;
+  --bs-btn-active-bg: #00820F;
+  --bs-btn-active-border-color: #00700D;
+  --bs-btn-disabled-color: #000;
+  --bs-btn-disabled-bg: #00A213;
+  --bs-btn-disabled-border-color: #00A213;
+  --bs-btn-focus-shadow-rgb: 0, 162, 19;
+}
+
+/* Rename button on the scoreboard */
+.btn-outline-success {
+  --bs-btn-color: #00780E;
+  --bs-btn-border-color: #00780E;
+  --bs-btn-hover-color: #000;
+  --bs-btn-hover-bg: #00780E;
+  --bs-btn-hover-border-color: #00780E;
+  --bs-btn-active-color: #000;
+  --bs-btn-active-bg: #006B0C;
+  --bs-btn-active-border-color: #006B0C;
+  --bs-btn-focus-shadow-rgb: 0, 120, 14;
+}
+
+/* Logout, Home: light blue with black text */
+.btn-secondary {
+  --bs-btn-color: #000;
+  --bs-btn-bg: #8CAFFF;
+  --bs-btn-border-color: #8CAFFF;
+  --bs-btn-hover-color: #000;
+  --bs-btn-hover-bg: #7795D9;
+  --bs-btn-hover-border-color: #6C8AC9;
+  --bs-btn-active-color: #000;
+  --bs-btn-active-bg: #6983BF;
+  --bs-btn-active-border-color: #6079B3;
+  --bs-btn-disabled-color: #000;
+  --bs-btn-disabled-bg: #8CAFFF;
+  --bs-btn-disabled-border-color: #8CAFFF;
+  --bs-btn-focus-shadow-rgb: 140, 175, 255;
+}
+
+/* Don't Save: black idle text/border, light blue fill on hover */
+.btn-outline-secondary {
+  --bs-btn-color: #000;
+  --bs-btn-border-color: #000;
+  --bs-btn-hover-color: #000;
+  --bs-btn-hover-bg: #8CAFFF;
+  --bs-btn-hover-border-color: #8CAFFF;
+  --bs-btn-active-color: #000;
+  --bs-btn-active-bg: #7795D9;
+  --bs-btn-active-border-color: #7795D9;
+  --bs-btn-focus-shadow-rgb: 140, 175, 255;
+}
+
+/* GitHub login: pure black instead of Bootstrap's default near-black (#212529) */
+.btn-dark {
+  --bs-btn-bg: #000000;
+  --bs-btn-border-color: #000000;
+  --bs-btn-hover-bg: #1a1a1a;
+  --bs-btn-hover-border-color: #1a1a1a;
+  --bs-btn-active-bg: #1a1a1a;
+  --bs-btn-active-border-color: #1a1a1a;
+}
+
+/* Game screen: a top bar, then the play area filling the rest.
+   No Bootstrap equivalent for a full-screen fixed-position overlay. */
+#game {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* play area: everything below the bar; the circle is positioned inside this */
+#play {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* The target: a black circle; JS sets its size and left/top each move.
+   border/padding/appearance are cleared so the native button edge doesn't show. */
+#target {
+  position: absolute;
+  border-radius: 50%;
+  background: #000;
+  border: none;
+  padding: 0;
+  appearance: none;
+  cursor: pointer;
+}

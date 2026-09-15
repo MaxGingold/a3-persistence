@@ -1,0 +1,26 @@
+## Circle Clicker
+
+*(Render link: not deployed yet)*
+
+A reaction game where a circle sits in the play area and moves around everytime the user presses it. The goal is to press it as  much as possible in 30 secconds. 
+Players can save their score to a scoreboard that's visible to every logged-in user, though only the account that created a given score can rename or delete it.
+
+The biggest challenge was converting the original in-memory, no-auth version into a real multi-user system. Replacing the plain `http` server with Express, moving the scoreboard into MongoDB so it survives restarts, and layering in accounts and sessions without breaking the game itself was probobly the hardest part of A3 for me.
+
+For authentication, I used both a username/password strategy (an account is created automatically the first time a username is used) and GitHub OAuth via Passport.js. I kept the username/password option for the sake of versatility and ease of use and testing. 
+
+For CSS, I used Bootstrap 5, loaded via CDN with no build step. It gave me a full set of ready-made, accessible components like buttons so I could focus on wiring up the app instead of hand-rolling layout CSS, and its utility classes made centering and spacing consistent across every screen. I do not have a particular reason for using it over another option but It was reliativly easy to work with and implement into my program.
+
+My own custom CSS in main.css is now limited to what Bootstrap has no equivalent for like the full-screen game overlay and the clickable circle target, plus a set of color overrides that apply the  5-color palette I built for A1 .
+
+## Technical Achievements
+Tech Achievement 1 used OAuth authentication via GitHub, using Passport.js's `passport-github2` strategy. I also kept a username/password login option.
+
+Tech Achievement 2  100% on all four required Lighthouse tests (Performance, Accessibility, Best Practices, SEO) in Desktop mode, on both the login page and the main game page.
+
+Tech Achievement 3  Five separate npm middleware packages, beyond what Express includes by default:
+    express-session - manages login sessions via a signed cookie
+    passport - handles the authentication flow (local username/password and GitHub OAuth strategies)
+    morgan - logs every incoming HTTP request to the console
+    helmet - sets security-related HTTP response headers to close off common web vulnerabilities
+    compression - gzip-compresses HTTP responses to reduce transfer size
