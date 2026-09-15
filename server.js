@@ -21,6 +21,11 @@ mongoose.connect( process.env.MONGODB_URI )
   .then( () => console.log( 'Connected to MongoDB' ) )
   .catch( err => console.error( 'MongoDB connection error:', err.message ) )
 
+// Without this listener, a background connection error (e.g. a dropped
+// network link to Atlas) is an unhandled 'error' event, which crashes the
+// whole process instead of just logging.
+mongoose.connection.on( 'error', err => console.error( 'MongoDB error:', err.message ) )
+
 const app = express()
 app.use( helmet() )
 app.use( morgan( 'dev' ) )
